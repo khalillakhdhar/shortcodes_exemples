@@ -20,23 +20,7 @@ public Utilisateur getUtilisateurById(@PathVariable(value = "id") Long utilisate
     return utilisateurRepository.findById(utilisateurId)
             .orElseThrow(() -> new ResourceNotFoundException("Utilisateur", "id", utilisateurId));
 }
-    // Update a Utilisateur
-@PutMapping("/utilisateur/{id}")
-public Utilisateur updateUtilisateur(@PathVariable(value = "id") Long utilisateurId,
-                                        @Valid @RequestBody Utilisateur utilisateurDetails) {
-
-    Utilisateur utilisateur = utilisateurRepository.findById(utilisateurId)
-            .orElseThrow(() -> new ResourceNotFoundException("Utilisateur", "id", utilisateurId));
-
-    utilisateur.setNom(utilisateurDetails.getNom());
-    utilisateur.setPrenom(utilisateurDetails.getPrenom());
-    
-    utilisateur.setMdp(utilisateurDetails.getMdp());
-    utilisateur.setEmail(utilisateurDetails.getEmail());
-    utilisateur.setGrade(utilisateurDetails.getGrade());
-    Utilisateur updatedUtilisateur = utilisateurRepository.save(utilisateur);
-    return updatedUtilisateur;
-}
+  
 // Delete a Utilisateur
 @DeleteMapping("/utilisateurs/{id}")
 public ResponseEntity<?> deleteUtilisateur(@PathVariable(value = "id") Long utilisateurId) {
