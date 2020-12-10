@@ -25,3 +25,8 @@ public Student getStudent(int id) {
         }
         return student;
     }
+ public List < Student > getStudents() {
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            return session.createQuery("from Student", Student.class).list();
+        }
+    }
