@@ -1,7 +1,8 @@
   public void updateStudent(Student student) {
         Transaction transaction = null;
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+        try  {
             // start a transaction
+          (Session session = HibernateUtil.getSessionFactory().openSession());
             transaction = session.beginTransaction();
 
             // save the student object
